@@ -1,0 +1,49 @@
+.container {
+	min-height: 100vh;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: black;
+}
+#timer {
+	font-size: 50px;
+	font-weight: 800;
+	color: brown;
+}
+.quote-container {
+	width: 70%;
+	align-self: center;
+}
+#quote {
+	font-size: 25px;
+	font-weight: 700;
+	color: blueviolet;
+}
+#input {
+	border-radius: 10px;
+	width: 100%;
+	padding: 15px;
+	outline: none;
+	font-size: 25px;
+}
+.textarea-container {
+	padding: 10px 50px;
+}
+button {
+	width: 70%;
+	align-self: center;
+	height: 45px;
+	background-color: chocolate;
+	color: white;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+#result {
+	font-size: 50px;
+	font-weight: 800;
+	color: chartreuse;
+}
