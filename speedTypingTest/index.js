@@ -8,9 +8,7 @@ async function getRandomQuote() {
 		const response = await fetch("https://api.quotable.io/random");
 		const data = await response.json();
 		quote = data.content;
-		document.getElementById(
-			"quote",
-		).textContent = `Type the following quote: "${quote}"`;
+		document.getElementById("quote").textContent = `Quote : "${quote}"`;
 	} catch (error) {
 		console.error("Failed to fetch a random quote:", error);
 	}
@@ -20,7 +18,8 @@ function updateTimer() {
 	const now = new Date().getTime();
 	const elapsedSeconds = Math.floor((now - startTime) / 1000);
 	const remainingSeconds = Math.max(0, 60 - elapsedSeconds);
-	document.getElementById("timer").textContent = remainingSeconds;
+	document.getElementById("timer").innerHTML =
+		remainingSeconds + `<span class='small-text'>Seconds</span>`;
 	if (remainingSeconds === 0) {
 		clearInterval(timerInterval);
 		document.getElementById("input").readOnly = true;
@@ -50,9 +49,9 @@ function showResult() {
 		.value.split(" ")
 		.filter(Boolean).length;
 	const wpm = Math.round(words);
-	document.getElementById(
-		"result",
-	).textContent = `Your typing speed: ${wpm} WPM`;
+	document.getElementById("result").innerHTML =
+		"Your Typing speed is " +
+		`<span class="span">${wpm}<span id='wpm'> words per minute.</span></span>`;
 	document.getElementById("result").classList.remove("hidden");
 }
 

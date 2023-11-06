@@ -35,7 +35,7 @@
 
 .on-switch {
 	color: #ffffff;
-	background-color: #cbd2d9;
+	background-color: grey;
 	font-family: "Roboto";
 	font-size: 24px;
 	font-weight: bold;
@@ -48,7 +48,7 @@
 
 .off-switch {
 	color: #ffffff;
-	background-color: #e12d39;
+	background-color: red;
 	font-family: "Roboto";
 	font-size: 24px;
 	font-weight: bold;
