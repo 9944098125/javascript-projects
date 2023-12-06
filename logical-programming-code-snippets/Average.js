@@ -1,11 +1,11 @@
 // average of a list of numbers
-function average(arr) {
-  if (arr.length === 0) {
-    return 0;
-  }
-  let sum = arr.reduce((acc, val) => acc + val);
-  const average = sum / arr.length;
-  return average;
+function average(...rest) {
+	if (rest.length === 0) {
+		return 0;
+	}
+	let sum = rest.reduce((acc, total) => acc + total, 0);
+	const average = sum / rest.length;
+	return average;
 }
 
-console.log(average([2, 5, 2, 4, 3]));
+console.log(average(2, 5, 4, 8, 1, 12, 15));

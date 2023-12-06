@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Test</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+	</head>
+	<body>
+		<input id="input" type="text" oninput="enter()" />
+		<h4 id="output"></h4>
+		<script>
+			const inputField = document.getElementById("input");
+			const output = document.getElementById("output");
+			function enter() {
+				output.textContent = inputField.value;
+				output.style.color = "green";
+				output.style.fontSize = "50px";
+				output.style.fontWeight = "800";
+			}
+		</script>
+	</body>
+</html>

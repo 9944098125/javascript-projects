@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous"
+		/>
+	</head>
+	<body>
+		<div
+			style="min-height: 100vh"
+			class="container-fluid d-flex flex-column justify-content-center align-items-center justify-content-center"
+		>
+			<form class="form-section" id="survey-form">
+				<h3 class="text-success">Survey</h3>
+				<div class="form-group mb-4">
+					<p class="fs-5">
+						What fruits do you prefer eating, before going to gym ?
+					</p>
+					<div class="d-flex align-items-center gap-3">
+						<label for="banana">
+							<input type="checkbox" id="banana" name="fruits" value="Banana" />
+							Banana
+						</label>
+						<label for="apple">
+							<input type="checkbox" id="apple" name="fruits" value="apple" />
+							Apple
+						</label>
+						<label for="orange">
+							<input type="checkbox" id="orange" name="fruits" value="orange" />
+							orange
+						</label>
+						<label for="mango">
+							<input type="checkbox" id="mango" name="fruits" value="mango" />
+							Mango
+						</label>
+						<label for="pappaya">
+							<input
+								type="checkbox"
+								id="pappaya"
+								name="fruits"
+								value="pappaya"
+							/>
+							Pappaya
+						</label>
+					</div>
+					<p class="text-danger" id="fruits-error"></p>
+				</div>
+				<div class="form-group mb-4">
+					<p class="fs-5">What age group you belong to ?</p>
+					<div class="d-flex align-items-center gap-3">
+						<label for="kid">
+							<input type="radio" name="age" value="kid" id="kid" />
+							Kid
+						</label>
+						<label for="teen">
+							<input type="radio" name="age" value="teen" id="teen" />
+							Teen
+						</label>
+						<label for="young">
+							<input type="radio" name="age" value="young" id="young" />
+							Young
+						</label>
+						<label for="midde">
+							<input type="radio" name="age" value="midde" id="midde" />
+							Midde
+						</label>
+						<label for="old">
+							<input type="radio" name="age" value="old" id="old" />
+							Old
+						</label>
+					</div>
+					<p class="text-danger" id="age-error"></p>
+				</div>
+				<div class="form-group mb-4">
+					<p class="fs-5">How many times do eat per day ?</p>
+					<select class="w-100 form-control" id="times" name="times">
+						<option value="" defaultValue>Select Any One</option>
+						<option value="3">3 Times</option>
+						<option value="5">5 Times</option>
+						<option value="1">1 Time</option>
+						<option value="10">10 Times</option>
+					</select>
+					<p class="text-danger" id="times-error"></p>
+				</div>
+				<div class="form-group mb-4">
+					<p class="fs-5">What is your Name ?</p>
+					<input
+						class="w-100 form-control"
+						type="text"
+						id="nameInput"
+						name="name"
+					/>
+					<p class="text-danger" id="name-error"></p>
+				</div>
+				<button type="submit" class="btn btn-success w-100">Submit</button>
+			</form>
+
+			<div class="answers-container">
+				<div class="fruits-answer"></div>
+				<div class="age-answer"></div>
+				<div class="times-answer"></div>
+				<div class="name-answer"></div>
+			</div>
+		</div>
+		<script src="index.js"></script>
+	</body>
+</html>

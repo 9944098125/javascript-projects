@@ -17,6 +17,7 @@ async function getRandomQuote() {
 function updateTimer() {
 	const now = new Date().getTime();
 	const elapsedSeconds = Math.floor((now - startTime) / 1000);
+	// console.log("elapsedSeconds", elapsedSeconds);
 	const remainingSeconds = Math.max(0, 60 - elapsedSeconds);
 	document.getElementById("timer").innerHTML =
 		remainingSeconds + `<span class='small-text'>Seconds</span>`;
@@ -44,10 +45,14 @@ function checkQuote() {
 }
 
 function showResult() {
-	const words = document
-		.getElementById("input")
-		.value.split(" ")
-		.filter(Boolean).length;
+	const words = document.getElementById("input").value.split(" ").length;
+	// console.log(
+	// 	document.getElementById("input").value.split(" ").filter(Boolean),
+	// );
+	// console.log(document.getElementById("input").value.split(" "));
+	// console.log(
+	// 	document.getElementById("input").value.split(" ").filter(Boolean),
+	// );
 	const wpm = Math.round(words);
 	document.getElementById("result").innerHTML =
 		"Your Typing speed is " +

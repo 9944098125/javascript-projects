@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500&display=swap");
+
+body {
+	font-family: "Roboto Condensed", sans-serif;
+	margin: 0 0;
+	padding: 0 0;
+}
+input[type="checkbox"] {
+	display: none;
+}
+.checkbox-replacement {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	width: 50px;
+	border: 2px solid deeppink;
+	border-radius: 50%;
+	margin-right: 25px;
+	cursor: pointer;
+}
+.checkbox-replacement::after {
+	content: "";
+	height: 0px;
+	width: 0px;
+	background-color: deeppink;
+	border-radius: 50%;
+	opacity: 0;
+}
+input:checked ~ .checkbox-replacement:after {
+	height: 35px;
+	width: 35px;
+	opacity: 1;
+}
+.todo-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+.content {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+}
+.content input {
+	background-color: transparent;
+	color: white;
+	font-size: 25px;
+	font-weight: 700;
+	outline: none !important;
+	border: none !important;
+}
+.todo-item.done .content input {
+	text-decoration: line-through;
+	color: grey;
+}
+.actions-row {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}

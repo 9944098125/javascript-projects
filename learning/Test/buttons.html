@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Buttons</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+	</head>
+	<body>
+		<div
+			style="
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			"
+		>
+			<button id="btn" type="button">Click Me !</button>
+		</div>
+		<script>
+			const btn = document.getElementById("btn");
+			btn.addEventListener("mouseover", () => {
+				btn.textContent = "Hovered";
+				btn.style.height = "44px";
+				btn.style.width = "120px";
+				btn.style.backgroundColor = "red";
+				btn.style.color = "white";
+				btn.style.border = "none";
+				btn.style.outline = "none";
+				btn.style.borderRadius = "9px";
+			});
+
+			btn.addEventListener("click", () => {
+				btn.style.backgroundColor = "green";
+				btn.textContent = "Clicked !";
+			});
+		</script>
+	</body>
+</html>

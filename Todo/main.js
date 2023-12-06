@@ -5,7 +5,6 @@ window.addEventListener("load", () => {
 
 	todoForm.addEventListener("submit", (e) => {
 		e.preventDefault();
-
 		const newTodo = {
 			content: e.target.elements.content.value,
 			done: false,
@@ -76,7 +75,7 @@ function DisplayTodo() {
 			DisplayTodo();
 		});
 
-		editBtn.addEventListener("click", (e) => {
+		editBtn.addEventListener("click", () => {
 			const mainInput = content.querySelector("input");
 			mainInput.removeAttribute("readonly");
 			mainInput.focus();
