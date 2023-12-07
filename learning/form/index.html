@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>Form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Dhurjati&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			body,
+			* {
+				font-family: "Dhurjati", sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			style="min-height: 100vh; font-size: 25px"
+			class="container-fluid p-3 d-flex justify-content-center align-items-center"
+		>
+			<div
+				class="bg-warning w-70 rounded p-4 d-flex flex-column align-items-center form-section"
+			>
+				<form id="survey">
+					<div class="d-flex align-items-center gap-4 w-100">
+						<div class="form-group p-2 w-50">
+							<label class="text-white" for="name">Name</label>
+							<input class="form-control w-100" type="text" id="name" />
+							<p id="nameError"></p>
+						</div>
+						<div class="form-group p-2 w-50">
+							<label class="text-white" for="rollNo">Roll No.</label>
+							<input class="form-control w-100" type="text" id="rollNo" />
+							<p id="rollNoError"></p>
+						</div>
+					</div>
+					<div class="">
+						<div class="form-group p-2">
+							<p class="text-white">Select Group</p>
+							<select
+								style="border: none; outline: none"
+								class="w-100"
+								id="group"
+								name="group"
+							>
+								<option value="">Select Any one</option>
+								<option value="civil">Civil</option>
+								<option value="computers">Computer Science</option>
+								<option value="mechanical">Mechanical</option>
+								<option value="electrical">ECE</option>
+							</select>
+							<p id="groupError"></p>
+						</div>
+						<div class="form-group p-2">
+							<p class="text-white" for="ssc">SSC CGPA</p>
+							<div class="d-flex align-items-center gap-3">
+								<label class="text-white" for="less">
+									<input type="radio" name="ssc" id="less" />
+									Less Than 5
+								</label>
+								<label class="text-white" for="avg">
+									<input type="radio" name="ssc" id="avg" />
+									Less Than 7
+								</label>
+								<label class="text-white" for="aboveAvg">
+									<input type="radio" name="ssc" id="aboveAvg" />
+									Less Than 8
+								</label>
+								<label class="text-white" for="good">
+									<input type="radio" name="ssc" id="good" />
+									Less Than 9
+								</label>
+								<label class="text-white" for="vgood">
+									<input type="radio" name="ssc" id="vgood" />
+									More Than 9
+								</label>
+							</div>
+							<p id="sscError"></p>
+						</div>
+
+						<div class="form-group p-2 mb-3">
+							<p class="text-white" for="ssc">Which Book did you read ?</p>
+							<div class="d-flex align-items-center gap-3">
+								<label class="text-white" for="book1">
+									<input
+										type="checkbox"
+										value="new-culture"
+										name="books"
+										id="book1"
+									/>
+									New Culture
+								</label>
+								<label class="text-white" for="book2">
+									<input
+										type="checkbox"
+										value="power-of-mind"
+										name="books"
+										id="book2"
+									/>
+									Power Of Your Mind
+								</label>
+								<label class="text-white" for="book3">
+									<input
+										type="checkbox"
+										value="you-can"
+										name="books"
+										id="book3"
+									/>
+									You Can
+								</label>
+								<label class="text-white" for="book4">
+									<input
+										type="checkbox"
+										value="murder-in-family"
+										name="books"
+										id="book4"
+									/>
+									Murder In The Family
+								</label>
+								<label class="text-white" for="book5">
+									<input
+										type="checkbox"
+										value="ashoka"
+										name="books"
+										id="book5"
+									/>
+									Ashoka
+								</label>
+								<label class="text-white" for="book6">
+									<input type="checkbox" value="none" name="books" id="book6" />
+									Read No Books
+								</label>
+							</div>
+							<p id="booksError"></p>
+						</div>
+
+						<button class="btn btn-dark w-100" type="submit">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script src="index.js"></script>
+	</body>
+</html>
