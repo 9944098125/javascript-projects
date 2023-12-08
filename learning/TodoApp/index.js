@@ -1,103 +1,94 @@
 window.addEventListener("load", () => {
 	allTodo = JSON.parse(localStorage.getItem("all-todo")) || [];
-	const createForm = document.getElementById("create-form");
-	createForm.addEventListener("submit", (event) => {
+	const todoForm = document.getElementById("create-todo-form");
+	todoForm.addEventListener("submit", (event) => {
 		event.preventDefault();
-		// console.log("Event", event.target);
+		// console.log(e);
 		const newTodo = {
-			content: document.getElementById("content").value,
+			item: event.target.elements.content.value,
 			done: false,
-			createdAt:
-				new Date().getDate().toString() +
-				"/" +
-				new Date().getMonth().toString() +
-				"/" +
-				new Date().getFullYear().toString(),
+			createdAt: new Date(),
 		};
 		allTodo.push(newTodo);
 		localStorage.setItem("all-todo", JSON.stringify(allTodo));
-		displayAllTodo();
+		displayTodo();
 		event.target.reset();
 	});
-	displayAllTodo();
+	displayTodo();
 });
 
-function displayAllTodo() {
-	const items = document.getElementById("items");
-	items.innerHTML = "";
+function displayTodo() {
+	const todoItemsList = document.getElementById("todo-items-list");
+	todoItemsList.innerHTML = "";
 
 	allTodo.forEach((eachTodo) => {
-		const eachTodoContainer = document.createElement("div");
+		const todoItemContainer = document.createElement("div");
+		const label = document.createElement("label");
 		const checkboxInput = document.createElement("input");
+		const checkboxReplacement = document.createElement("span");
 		const content = document.createElement("div");
-		const actionsContainer = document.createElement("div");
+		const actions = document.createElement("div");
 		const editBtn = document.createElement("button");
 		const deleteBtn = document.createElement("button");
-		const label = document.createElement("label");
-		const checkboxReplacement = document.createElement("span");
-		const createdAt = document.createElement("p");
 
 		checkboxInput.type = "checkbox";
 		checkboxInput.checked = eachTodo.done;
-		createdAt.textContent = eachTodo.createdAt;
-		content.innerHTML = `<input type="text" class="each-todo-content-input" value="${eachTodo.content}"  readonly />`;
-		editBtn.innerHTML = "Edit";
-		deleteBtn.innerHTML = "Delete";
+		content.innerHTML = `<input type='text' value="${eachTodo.item}" readonly />`;
+		editBtn.innerHTML = "EDIT";
+		deleteBtn.innerHTML = "DELETE";
 
-		eachTodoContainer.classList.add("each-todo");
-		checkboxInput.classList.add("checkbox-input");
-		content.classList.add("each-todo-content-container");
-		actionsContainer.classList.add("actions");
-		editBtn.classList.add("edit-btn");
-		deleteBtn.classList.add("delete-btn");
+		todoItemContainer.classList.add("todo-item");
 		checkboxReplacement.classList.add("checkbox-replacement");
-		createdAt.classList.add("created-at");
+		content.classList.add("content");
+		actions.classList.add("actions-row");
+		editBtn.classList.add("btn");
+		deleteBtn.classList.add("btn");
+		editBtn.classList.add("btn-primary");
+		deleteBtn.classList.add("btn-danger");
 
 		label.appendChild(checkboxInput);
 		label.appendChild(checkboxReplacement);
-		actionsContainer.appendChild(editBtn);
-		actionsContainer.appendChild(deleteBtn);
-		eachTodoContainer.appendChild(label);
-		eachTodoContainer.appendChild(content);
-		eachTodoContainer.appendChild(createdAt);
-		eachTodoContainer.appendChild(actionsContainer);
+		actions.appendChild(editBtn);
+		actions.appendChild(deleteBtn);
+		todoItemContainer.appendChild(label);
+		todoItemContainer.appendChild(content);
+		todoItemContainer.appendChild(actions);
 
-		items.appendChild(eachTodoContainer);
+		todoItemsList.appendChild(todoItemContainer);
 
 		if (eachTodo.done) {
-			eachTodoContainer.classList.add("done");
+			todoItemContainer.classList.add("done");
 		}
-
 		checkboxInput.addEventListener("change", (event) => {
-			// console.log(event.target);
+			// console.log(event);
 			eachTodo.done = event.target.checked;
 			localStorage.setItem("all-todo", JSON.stringify(allTodo));
 			if (eachTodo.done) {
-				eachTodoContainer.classList.add("done");
+				todoItemContainer.classList.add("done");
 			} else {
-				eachTodoContainer.classList.remove("done");
+				todoItemContainer.classList.remove("done");
 			}
-			displayAllTodo();
+			displayTodo();
 		});
 
 		editBtn.addEventListener("click", () => {
-			const contentInput = content.querySelector("input");
-			contentInput.removeAttribute("readonly");
-			contentInput.focus();
-			contentInput.addEventListener("blur", (event) => {
-				contentInput.setAttribute("readonly", true);
-				eachTodo.content = event.target.value;
+			const editInput = content.querySelector("input");
+			editInput.removeAttribute("readonly");
+			editInput.focus();
+			editInput.addEventListener("blur", (event) => {
+				editInput.setAttribute("readonly", true);
+				// console.log(event);
+				eachTodo.item = event.target.value;
 				localStorage.setItem("all-todo", JSON.stringify(allTodo));
-				displayAllTodo();
+				displayTodo();
 			});
 		});
 
 		deleteBtn.addEventListener("click", () => {
-			allTodo = allTodo.filter((each) => each !== eachTodo);
+			allTodo = allTodo.filter((each) => each.item !== eachTodo.item);
 			localStorage.setItem("all-todo", JSON.stringify(allTodo));
-			displayAllTodo();
+			displayTodo();
 		});
 	});
 }
-
-// with hoisting even if the variable or function can be called or used before their declaration
+// Recurring functions

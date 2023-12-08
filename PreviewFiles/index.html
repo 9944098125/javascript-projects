@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>File Preview</title>
+		<style>
+			body {
+				min-height: 90vh;
+			}
+			.file-preview {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+			#filePreview {
+				max-height: 70vh;
+				padding: 25px;
+				overflow-y: scroll;
+				border: 1px solid lightblue;
+				box-shadow: 1px 1px 1px 1px blue;
+				border-radius: 12px;
+			}
+			#filePreview::-webkit-scrollbar {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="file" id="fileInput" onchange="previewFile()" />
+		<div class="file-preview">
+			<div id="filePreview"></div>
+		</div>
+
+		<script>
+			function previewFile() {
+				const fileInput = document.getElementById("fileInput");
+				const filePreview = document.getElementById("filePreview");
+
+				const file = fileInput.files[0];
+
+				if (file) {
+					if (file.type.startsWith("text/")) {
+						// Display content for text-based files
+						const reader = new FileReader();
+
+						reader.onload = function (e) {
+							const content = document.createElement("pre");
+							content.textContent = e.target.result;
+							filePreview.innerHTML = "";
+							filePreview.appendChild(content);
+						};
+
+						reader.readAsText(file);
+					} else if (file.type.startsWith("image/")) {
+						// Image file
+						const reader = new FileReader();
+						reader.onload = function (e) {
+							const imageUrl = e.target.result;
+							filePreview.innerHTML = `<img src="${imageUrl}" alt="Image Preview">`;
+						};
+						reader.readAsDataURL(file);
+					} else {
+						// Provide a link to download non-text files
+						const downloadLink = document.createElement("a");
+						downloadLink.href = URL.createObjectURL(file);
+						downloadLink.download = file.name;
+						downloadLink.textContent = `Download ${file.name}`;
+
+						filePreview.innerHTML = "";
+						filePreview.appendChild(downloadLink);
+					}
+				} else {
+					filePreview.innerHTML = "Sorry could not Preview the File";
+				}
+			}
+		</script>
+	</body>
+</html>
