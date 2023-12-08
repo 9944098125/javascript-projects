@@ -9,13 +9,15 @@ const booksError = document.getElementById("booksError");
 const nameInput = document.getElementById("name");
 const rollNoInput = document.getElementById("rollNo");
 
+const nameDiv = document.querySelector(".nameDiv");
+const rollNoDiv = document.querySelector(".rollNoDiv");
+const groupDiv = document.querySelector(".groupDiv");
+const sscMarksDiv = document.querySelector(".sscMarksDiv");
+const booksDiv = document.querySelector(".booksDiv");
+
 // console.log("coming");
 // console.log(surveyForm);
 const selectedGroup = document.getElementById("group");
-const selectedSSCMarks = document.querySelector("input[name=ssc]:checked");
-const booksRead = Array.from(
-	document.querySelectorAll("input[name=books]:checked"),
-);
 
 // function changeName() {
 // 	console.log("blurred");
@@ -53,6 +55,10 @@ selectedGroup.addEventListener("blur", () => {
 
 surveyForm.addEventListener("submit", (event) => {
 	event.preventDefault();
+	const selectedSSCMarks = document.querySelector("input[name=ssc]:checked");
+	const booksRead = Array.from(
+		document.querySelectorAll("input[name=books]:checked"),
+	);
 	if (nameInput.value === "") {
 		nameError.textContent = "Name is required !";
 		nameError.style.color = "red";
@@ -86,5 +92,28 @@ surveyForm.addEventListener("submit", (event) => {
 		booksError.style.color = "red";
 	} else {
 		booksError.textContent = "";
+	}
+
+	let books = [];
+	let selectedBooks = booksRead.map((book) => book.value).join(", ");
+	books.push(`Selected Books - ${selectedBooks}`);
+
+	if (
+		nameInput.value &&
+		rollNoInput &&
+		surveyForm.elements.group.value &&
+		selectedSSCMarks.value &&
+		booksRead.length > 0
+	) {
+		nameDiv.textContent = "Name: " + nameInput.value;
+		rollNoDiv.textContent = "Roll Number: " + rollNoInput.value;
+		groupDiv.textContent = "Group: " + surveyForm.elements.group.value;
+		sscMarksDiv.textContent = "SSC CGPA: " + selectedSSCMarks.value;
+		booksDiv.textContent = books.join("\n");
+		const surveyModal = new bootstrap.Modal(
+			document.getElementById("surveyModal"),
+		);
+		surveyModal.show();
+		event.target.reset();
 	}
 });
